@@ -9,8 +9,11 @@
 <body id="oben">
 
     <header>
-        <h1>Willkommen in Steyr</h1>
         <img src="logo steyr ohne hintergrund.png" alt="Logo Stadt Steyr" class="logo">
+        
+        <button id="dark-mode-toggle">🌙 Modus</button>
+
+        <h1>Willkommen in Steyr</h1>
     </header>
 
     <nav>
@@ -49,7 +52,7 @@
             <img src="christkindl.jpg" alt="Christkindl" height="185">
         </div>
 
-        <p style="text-align: center; font-weight: bold; color: #007baf; margin-top: 20px;">
+        <p class="accent-text">
             Es gibt viel zu entdecken bei uns, wir freuen uns auf Ihren Besuch! 
         </p>
 
@@ -58,5 +61,26 @@
         </div>
     </main>
 
+    <script>
+        const toggleButton = document.getElementById('dark-mode-toggle');
+        const body = document.body;
+
+        if (localStorage.getItem('theme') === 'dark') {
+            body.classList.add('dark-mode');
+            toggleButton.textContent = '☀️ Modus';
+        }
+
+        toggleButton.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            
+            if (body.classList.contains('dark-mode')) {
+                localStorage.setItem('theme', 'dark');
+                toggleButton.textContent = '☀️ Modus';
+            } else {
+                localStorage.setItem('theme', 'light');
+                toggleButton.textContent = '🌙 Modus';
+            }
+        });
+    </script>
 </body>
 </html>
